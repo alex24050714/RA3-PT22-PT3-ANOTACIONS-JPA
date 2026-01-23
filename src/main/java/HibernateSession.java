@@ -1,5 +1,3 @@
-package es.ilerna.M0486.ra3.pt22.pt3.anotacions.jpa.main;
-
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
@@ -14,14 +12,14 @@ public class HibernateSession {
 			Configuration configuration = new Configuration();
 			
 			configuration.configure(); 
-			configuration.addAnnotatedClass(es.ilerna.M0486.ra3.pt22.anotacions.jpa.domain.Person.class);
-			configuration.addAnnotatedClass(es.ilerna.M0486.ra3.pt22.anotacions.jpa.domain.Student.class);
-			configuration.addAnnotatedClass(es.ilerna.M0486.ra3.pt22.anotacions.jpa.domain.Teacher.class);
+			configuration.addAnnotatedClass(domain.Person.class);
+			configuration.addAnnotatedClass(domain.Student.class);
+			configuration.addAnnotatedClass(domain.Teacher.class);
 
-			configuration.addAnnotatedClass(es.ilerna.M0486.ra3.pt22.anotacions.jpa.domain.Vehicle.class);
-			configuration.addAnnotatedClass(es.ilerna.M0486.ra3.pt22.anotacions.jpa.domain.Car.class);
-			configuration.addAnnotatedClass(es.ilerna.M0486.ra3.pt22.anotacions.jpa.domain.Plane.class);
-			configuration.addAnnotatedClass(es.ilerna.M0486.ra3.pt22.anotacions.jpa.domain.Motorcycle.class);
+			configuration.addAnnotatedClass(domain.Vehicle.class);
+			configuration.addAnnotatedClass(domain.Car.class);
+			configuration.addAnnotatedClass(domain.Plane.class);
+			configuration.addAnnotatedClass(domain.Motorcycle.class);
 			
 			ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder()
 				.applySettings(configuration.getProperties())
