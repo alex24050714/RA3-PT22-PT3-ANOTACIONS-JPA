@@ -1,12 +1,14 @@
 package domain;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "person")
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name = "person_type")
-public class Person {
+public abstract class Person {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
@@ -17,13 +19,23 @@ public class Person {
     private String surname;
     @Column(name = "phoneNumber")
     private int phoneNumber;
+    @OneToMany(mappedBy = "owner", cascade = CascadeType.ALL)
+    private List<Vehicle> vehicles = new ArrayList<>();
 
-    public Person(int id, String name, String surname, int phoneNumber) {
-        this.id = id;
+    public Person() {
+    }
+
+    public Person(String name, String surname, int phoneNumber) {
         this.name = name;
         this.surname = surname;
         this.phoneNumber = phoneNumber;
     }
+
+    public void addVehicle(Vehicle vehicle){
+        vehicles.add(vehicle);
+        vehicle.setOwner(this);
+    }
+
 
     public int getId() {
         return id;
@@ -55,6 +67,14 @@ public class Person {
 
     public void setPhoneNumber(int phoneNumber) {
         this.phoneNumber = phoneNumber;
+    }
+
+    public List<Vehicle> getVehicles() {
+        return vehicles;
+    }
+
+    public void setVehicles(List<Vehicle> vehicles) {
+        this.vehicles = vehicles;
     }
 
     @Override

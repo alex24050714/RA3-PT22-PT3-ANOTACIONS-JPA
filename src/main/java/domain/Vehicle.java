@@ -4,7 +4,8 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "vehicle")
-public class Vehicle {
+@Inheritance(strategy = InheritanceType.JOINED)
+public abstract class Vehicle {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
@@ -16,8 +17,14 @@ public class Vehicle {
     @Column(name = "price")
     private float price;
 
-    public Vehicle(int id, String brand, int year, float price) {
-        this.id = id;
+    @ManyToOne
+    @JoinColumn(name = "person_id")
+    private Person owner;
+
+    public Vehicle() {
+    }
+
+    public Vehicle(String brand, int year, float price) {
         this.brand = brand;
         this.year = year;
         this.price = price;
@@ -53,6 +60,14 @@ public class Vehicle {
 
     public void setPrice(float price) {
         this.price = price;
+    }
+
+    public Person getOwner() {
+        return owner;
+    }
+
+    public void setOwner(Person owner) {
+        this.owner = owner;
     }
 
     @Override

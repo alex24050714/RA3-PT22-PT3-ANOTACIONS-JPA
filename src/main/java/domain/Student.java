@@ -1,5 +1,6 @@
 package domain;
 
+import javax.persistence.Column;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.Table;
@@ -8,10 +9,22 @@ import javax.persistence.Table;
 @Table(name = "student")
 @DiscriminatorValue("student")
 public class Student extends Person{
+    @Column(name = "studentCode")
     private String studentCode;
 
-    public Student(int id, String name, String surname, int phoneNumber, String studentCode) {
-        super(id, name, surname, phoneNumber);
+    public Student() {
+    }
+
+    public Student(String name, String surname, int phoneNumber, String studentCode) {
+        super(name, surname, phoneNumber);
+        this.studentCode = studentCode;
+    }
+
+    public String getStudentCode() {
+        return studentCode;
+    }
+
+    public void setStudentCode(String studentCode) {
         this.studentCode = studentCode;
     }
 }
