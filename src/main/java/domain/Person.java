@@ -36,6 +36,10 @@ public abstract class Person {
         vehicle.setOwner(this);
     }
 
+    public void removeVehicle(Vehicle vehicle){
+        vehicles.remove(vehicle);
+        vehicle.setOwner(null);
+    }
 
     public int getId() {
         return id;
