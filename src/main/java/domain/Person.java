@@ -25,7 +25,7 @@ public abstract class Person {
     public Person() {
     }
 
-    public Person(String name, String surname, int phoneNumber) {
+    public Person(int id, String name, String surname, int phoneNumber) {
         this.name = name;
         this.surname = surname;
         this.phoneNumber = phoneNumber;
