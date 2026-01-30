@@ -14,6 +14,9 @@ public class Student extends Person{
 
     public Student() {
     }
+    public Student(String studentCode){
+        this.studentCode = studentCode;
+    }
 
     public Student(int id, String name, String surname, int phoneNumber, String studentCode) {
         super(id, name, surname, phoneNumber);

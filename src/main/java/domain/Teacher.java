@@ -14,6 +14,9 @@ public class Teacher extends Person{
 
     public Teacher() {
     }
+    public Teacher(String teacherCode){
+        this.teacherCode = teacherCode;
+    }
 
     public Teacher(int id, String name, String surname, int phoneNumber, String teacherCode) {
         super(id, name, surname, phoneNumber);
